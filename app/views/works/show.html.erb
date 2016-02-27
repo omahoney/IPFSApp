@@ -1,0 +1,30 @@
+<div class="page-header">
+  <%= link_to works_path, :class => 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Back
+  <% end %>
+  <%= link_to edit_work_path(@work), :class => 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-pencil"></span>
+    Edit
+  <% end %>
+  <h1>Show work</h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt>Author:</dt>
+  <dd><%= @work.author %></dd>
+
+  <dt>Title:</dt>
+  <dd><%= @work.title %></dd>
+
+  <dt>IPFS Hash:</dt>
+  <dd><%= @work.ipfshash %></dd>
+</dl>
+
+<object data= "<%= @work.work_document %>"
+        type="application/pdf"
+        class="pdf"
+        width="100%"
+        height="100%">
+  <p>It appears you don't have a PDF plugin for this browser.</p>
+</object>

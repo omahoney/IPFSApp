@@ -1,0 +1,40 @@
+<div class="page-header">
+  <%= link_to new_work_path, :class => 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    New Work
+  <% end %>
+  <h1>Listing works</h1>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+            <th>Author</th>
+        <th>Title</th>
+        <th>IPFS Hash</th>
+            <th>Paperclip</th>
+            <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= content_tag_for(:tr, @works) do |work| %>
+            <td><%= work.author %></td>
+            <td><%= work.title %></td>
+        <td><%= work.ipfshash %></td>
+        <td><%= link_to image_tag("pdf_icon.png"), work_path(work) %></td>
+            <td><%= link_to 'Show', work %></td>
+        <td><%= link_to 'Edit', edit_work_path(work) %></td>
+        <td><%= link_to 'Destroy', work, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+        <td align="center"><%= link_to processIPFS_path(work) do %>
+              <span class="glyphicon glyphicon-save"></span>
+          <% end %></td>
+
+      <% end %>
+    </tbody>
+  </table>
+</div>
